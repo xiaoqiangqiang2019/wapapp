@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=640" />
+	<style>
+		.open{
+			text-align:center;
+			margin-top:20px;
+			font-size:25px;
+			display:block;
+		}
+    }
+  </style>
+</head>
+
+<body>
+
+<a  href="javascript:;" data-href="http://m.baidu.com" class="open">测试跳转百度1</a></br>
+<a  href="javascript:;" data-href="http://m.qq.com.com" class="open">测试跳转百度2</a></br>
+<a  href="javascript:;" data-href="http://m.google.com" class="open">测试跳转百度3</a></br>
+<a  href="javascript:;" data-href="http://m.ganji.com" class="open">测试跳转百度4</a></br>
+<a  href="javascript:;" data-href="http://m.hao123.com" class="open">测试跳转百度5</a>
+<a  href="javascript:;" data-href="http://m.163.com" class="open">测试跳转百度6</a></br>
+<a  href="javascript:;" data-href="http://m.ceshi.com" class="open">测试跳转百度7</a></br>
+<a  href="javascript:;" data-href="http://m.aaa.com" class="open">测试跳转百度8</a></br>
+<a  href="javascript:;" data-href="http://m.bbb.com" class="open">测试跳转百度9</a>
+
+</body>
+</html>
+<script src="./js/mui.min.js"></script>
+<script>
+    mui.init();
+    mui.plusReady(function () {
+		var elem = document.getElementById('open');
+		var as=document.getElementsByTagName("a")
+	// 判断是否在5+环境下
+		var isPlus = navigator.userAgent.indexOf("Html5Plus") > -1;
+		if(isPlus) {
+					document.body.classList.add('mui-plus');			
+				} else {
+					document.body.setAttribute('class', '');
+					
+				}
+		function plusReady(callback) {
+					var readyRE = /complete|loaded|interactive/;
+					if(window.plus) {
+						setTimeout(function() {
+							callback();
+						}, 0);
+					} else {
+						document.addEventListener("plusready", function() {
+							callback();
+						}, false);
+					}
+				}
+				for(var i = 0 ; i < as.length; i++){
+					as[i].onclick= function () {
+						plus.runtime.openURL(this.getAttribute('data-href'));
+					}
+				}
+			// elem.addEventListener('click', function () {
+				//plus.runtime.openURL(elem.getAttribute('data-href'));
+			//});
+
+    })
+</script>
